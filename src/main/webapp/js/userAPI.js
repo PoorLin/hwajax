@@ -16,7 +16,5 @@ export async function loginAPI(loginForm){
         .catch(function (error) {
             res = error;
         });
-    console.log(res)
-    //return {status: 'ok', reponse:}
  return res;
 }

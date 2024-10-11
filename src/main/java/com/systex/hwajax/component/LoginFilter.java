@@ -35,7 +35,6 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession httpSession = request.getSession();
         String path = request.getRequestURI();
-        System.out.println(path);
         String requestMethod = request.getMethod();
         //如果路徑是登入或註冊則放行
         if (path.endsWith("loginAjax")) {
@@ -51,12 +50,10 @@ public class LoginFilter implements Filter {
                 HashMap<String, String> errorMsg = new HashMap<>();
                 //驗證信箱值
                 if (null == email || email.trim().isEmpty()) {
-                    System.out.println("mail null");
                     errorMsg.put("email", "請輸入信箱");
                 } else {
                     //若非空或空白才來驗證正則
                     if (!Pattern.compile(EMAIL_REGEX).matcher(email).matches()) {
-                        System.out.println("mail regex");
                         errorMsg.put("email", "請輸入正確的信箱格式");
                     }
                 }

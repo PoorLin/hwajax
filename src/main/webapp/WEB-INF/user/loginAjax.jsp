@@ -82,16 +82,16 @@
         } else if ((res.data.responseCode === 3001)) {
             const errorMsg = res.data.errorMsg;
             const mailErrorMsg = errorMsg.email;
-            const passwordErrorMsh = errorMsg.password
+            const passwordErrorMsg = errorMsg.password
             if (mailErrorMsg !== undefined) {
-                errorMessagemailDiv.textContent = "請輸入信箱"
+                errorMessagemailDiv.textContent = mailErrorMsg
                 errorMessagemailDiv.style.display = "block";
             }else {
                 errorMessagemailDiv.textContent = "";
                 errorMessagemailDiv.style.display = "none";
             }
-            if (passwordErrorMsh !== undefined) {
-                errorMessagepasswordDiv.textContent = "請輸入密碼";
+            if (passwordErrorMsg !== undefined) {
+                errorMessagepasswordDiv.textContent = passwordErrorMsg;
                 errorMessagepasswordDiv.style.display = "block";
             }else {
                 errorMessagepasswordDiv.textContent = "";
