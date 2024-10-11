@@ -19,6 +19,7 @@ public class GameService {
         httpSession.setAttribute("guessGame",guessGame);
 
         if(isCorr){  //猜對
+            httpSession.setAttribute("guessGame",null);
             return  "game/youWin";
         }else {      //猜錯
             if(guessGame.getRemains() == 0){
