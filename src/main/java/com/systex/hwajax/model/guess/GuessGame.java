@@ -25,6 +25,7 @@ public class GuessGame {
         return this.remains;
     }
     public boolean guess(int number){
+        remains--;
         return number == this.luckyNumber;
 
     }

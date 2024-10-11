@@ -62,7 +62,7 @@ public class LoginFilter implements Filter {
                 }
                 //有基本的錯誤訊息就回去
                 if (!errorMsg.isEmpty()) {
-                    HttpResponseData errorResponseData = new HttpResponseData<>(LOGIN_DATA_ERROR,null,errorMsg);
+                    HttpResponseData errorResponseData = new HttpResponseData<>(LOGIN_DATA_ERROR, null, errorMsg);
                     String jsonResponse = mapper.writeValueAsString(errorResponseData);
                     response.setContentType("application/json");
                     response.getWriter().write(jsonResponse);
@@ -72,7 +72,7 @@ public class LoginFilter implements Filter {
                 HttpResponseData loginResultData = userService.login(loginForm);
                 if (loginResultData.getResponseCode() == 200) {// 登入成功
                     UserDTO userDTO = (UserDTO) loginResultData.getResponseData();
-                    httpSession.setAttribute("user",userDTO);
+                    httpSession.setAttribute("user", userDTO);
                     response.sendRedirect(request.getContextPath() + "/index");
                 } else { // 登入失敗
                     String jsonResponse = mapper.writeValueAsString(loginResultData);
@@ -92,7 +92,7 @@ public class LoginFilter implements Filter {
                     errorMsg.put("email", "請輸入信箱");
                 } else {
                     //若非空或空白才來驗證正則
-                    if (!Pattern.matches(EMAIL_REGEX,email)) {
+                    if (!Pattern.matches(EMAIL_REGEX, email)) {
                         errorMsg.put("email", "請輸入正確的信箱格式");
                     }
                 }
@@ -129,7 +129,6 @@ public class LoginFilter implements Filter {
                 // 已登入
                 filterChain.doFilter(request, response);
             }
-
         }
     }
 
